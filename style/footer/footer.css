@@ -1,0 +1,25 @@
+.footer__wrapper {
+  padding-top: 20px;
+  padding-bottom: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__text {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 130%;
+}
+
+.footer__social-links {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.footer__social-item {
+  width: 30px;
+  height: 30px;
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preload" href="fonts/Roboto-Light.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/Roboto-Bold.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="./style/index.css">
+  <link rel="stylesheet" href="./style/fonts.css">
+
+  <script type="module" src="script/index.js"></script>
+  <!-- <script src="https://gist.github.com/Maksim-Methed/4566b524529c5076cff39764575b31e5.js"></script> -->
+
+  <title>News</title>
+</head>
+
+<body class="page">
+
+  <header class="header visually-hidden">
+    <div class="container">
+      <div class="header__wrapper">
+        <div class="logo-wrapper">
+          <img class="logo-img" src="./img/logo-img.svg" alt="Лого сайта">
+        </div>
+        <form action="#" class="header__form">
+          <label for="" class="form__label">
+            <input class="header__search-line" type="text" placeholder="Я хочу знать про..." name="body">
+            <button class="header__btn-search" type="submit"></button>
+          </label>
+          <div class="header__lang">
+            <select class="header__lang-select" name="lang">
+              <option class="header__select" value=”RUS”>Россия</option>
+              <option class="header__select" value=”KZ”>Казахстан</option>
+              <option class="header__select" value=”BL”>Беларусь</option>
+            </select>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <section class="search">
+    </section>
+
+    <section class="new visually-hidden">
+    </section>
+
+  </main>
+
+  <footer class="footer visually-hidden">
+    <div class="container">
+      <div class="footer__wrapper">
+        <div class="logo-wrapper">
+          <img class="logo-img" src="./img/logo-img.svg" alt="Лого сайта">
+        </div>
+        <span class="footer__text">© 2020-2022 News</span>
+        <ul class="footer__social-links">
+          <li class="footer__social-item">
+            <img src="./img/twiter-icon.svg" alt="Иконка твитера" class="footer__img-soc twiter">
+          </li>
+          <li class="footer__social-item">
+            <img src="./img/xz-icon.svg" alt="Иконка хз" class="footer__img-soc xz">
+          </li>
+          <li class="footer__social-item">
+            <img src="./img/vk-icon.svg" alt="Иконка вк" class="footer__img-soc vk">
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+
+</html>
