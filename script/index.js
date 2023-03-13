@@ -2,19 +2,25 @@ import fetchRequest from './modules/fetchRequest.js';
 import { renderGoods } from './modules/renderGoods.js';
 import { renderSearch } from './modules/renderGoods.js';
 import { renderFourNews } from './modules/renderGoods.js';
-import preload from './modules/preload.js';
+import { preload } from './modules/preload.js';
 
 const news = document.querySelector('.new');
 const header = document.querySelector('.header');
 const footer = document.querySelector('.footer');
 
-const newsTopics = document.querySelector('.new');
+// const news = document.querySelector('.new');
+// console.log(newsTopics)
 
 const form = document.querySelector('.header__form');
+console.log('form', form)
 const searchTopic = document.querySelector('.search');
+console.log('searchTopic', searchTopic)
+const langSelect = document.querySelector('.header__lang-select').value;
+// const logo = document.querySelector('.logo-wrapper');
 
 const initSearch = (data) => {
-  newsTopics.innerHTML = '';
+  console.log('initSearch', initSearch)
+  news.innerHTML = '';
   return Promise.all([
     fetchRequest(`everything?q=${data}`, {
       callback: renderSearch,
@@ -22,7 +28,7 @@ const initSearch = (data) => {
         'X-Api-Key': 'e3348a594ddf4b52ba0ea024e1428837',
       },
     }),
-    fetchRequest('top-headlines?country=ru', {
+    fetchRequest(`top-headlines?country=${langSelect}`, {
       callback: renderFourNews,
       headers: {
         'X-Api-Key': 'e3348a594ddf4b52ba0ea024e1428837',
@@ -32,9 +38,10 @@ const initSearch = (data) => {
 };
 
 const startPage = new Promise((resolve) => {
+  console.log('старуем');
   preload.show();
   resolve(
-    fetchRequest('top-headlines?country=ru', {
+    fetchRequest(`top-headlines?country=${langSelect}`, {
       callback: renderGoods,
       headers: {
         'X-Api-Key': 'e3348a594ddf4b52ba0ea024e1428837',
@@ -44,11 +51,12 @@ const startPage = new Promise((resolve) => {
 });
 
 startPage.then(data => {
+  console.log('удаляем прелоадер');
   preload.remove();
   header.classList.remove('visually-hidden');
   news.classList.remove('visually-hidden');
   footer.classList.remove('visually-hidden');
-  newsTopics.append(data);
+  news.append(data);
 });
 
 form.addEventListener('submit', e => {
@@ -58,8 +66,8 @@ form.addEventListener('submit', e => {
   console.log('dataSearch', dataSearch);
   initSearch(dataSearch.body).then(item => {
     searchTopic.innerHTML = '';
-    newsTopics.innerHTML = '';
+    news.innerHTML = '';
     searchTopic.append(item[0]);
-    newsTopics.append(item[1]);
+    news.append(item[1]);
   });
 });

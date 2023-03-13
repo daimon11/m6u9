@@ -50,6 +50,7 @@
   gap: 10px;
   font-size: 16px;
   line-height: 130%;
+  /* align-items: center; */
 }
 
 .new__pic {

@@ -114,7 +114,17 @@ section {
   text-align: center;
 }
 
-.overlay svg {
+.overlay-img {
+  max-width: 270px;
+  height: 200px;
+  display: flex;
+  transform: translateY(-50%);
+  transform: translateX(-50%);
+  align-items: center;
+}
+
+.overlay svg,
+.overlay-img svg {
   animation: rotate 2s linear infinite;
 }
 
