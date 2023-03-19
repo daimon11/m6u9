@@ -8,15 +8,17 @@ const news = document.querySelector('.new');
 const header = document.querySelector('.header');
 const footer = document.querySelector('.footer');
 
-// const news = document.querySelector('.new');
-// console.log(newsTopics)
-
 const form = document.querySelector('.header__form');
 console.log('form', form)
 const searchTopic = document.querySelector('.search');
 console.log('searchTopic', searchTopic)
-const langSelect = document.querySelector('.header__lang-select').value;
-// const logo = document.querySelector('.logo-wrapper');
+const langSelect = document.querySelector('.header__lang-select');
+
+langSelect.addEventListener('change', () => {
+  console.log('смена язына на ' + `${langSelect.textContent}`);
+  start();
+  searchTopic.innerHTML = '';
+})
 
 const initSearch = (data) => {
   console.log('initSearch', initSearch)
@@ -28,36 +30,41 @@ const initSearch = (data) => {
         'X-Api-Key': 'e3348a594ddf4b52ba0ea024e1428837',
       },
     }),
-    fetchRequest(`top-headlines?country=${langSelect}`, {
+    fetchRequest(`top-headlines?country=${langSelect.value}`, {
       callback: renderFourNews,
       headers: {
         'X-Api-Key': 'e3348a594ddf4b52ba0ea024e1428837',
       },
+      lang: `${langSelect.value}`,
     })
   ]);
 };
 
-const startPage = new Promise((resolve) => {
-  console.log('старуем');
-  preload.show();
-  resolve(
-    fetchRequest(`top-headlines?country=${langSelect}`, {
-      callback: renderGoods,
-      headers: {
-        'X-Api-Key': 'e3348a594ddf4b52ba0ea024e1428837',
-      },
-    })
-  )
-});
+const start = () => {
+  const startPage = new Promise((resolve) => {
+    console.log('старуем');
+    preload.show();
+    resolve(
+      fetchRequest(`top-headlines?country=${langSelect.value}`, {
+        callback: renderGoods,
+        headers: {
+          'X-Api-Key': 'e3348a594ddf4b52ba0ea024e1428837',
+        },
+        lang: `${langSelect.value}`,
+      })
+    )
+  });
 
-startPage.then(data => {
-  console.log('удаляем прелоадер');
-  preload.remove();
-  header.classList.remove('visually-hidden');
-  news.classList.remove('visually-hidden');
-  footer.classList.remove('visually-hidden');
-  news.append(data);
-});
+  startPage.then(data => {
+    console.log('удаляем прелоадер');
+    preload.remove();
+    header.classList.remove('visually-hidden');
+    news.classList.remove('visually-hidden');
+    footer.classList.remove('visually-hidden');
+    news.innerHTML = '';
+    news.append(data);
+  });
+}
 
 form.addEventListener('submit', e => {
   e.preventDefault();
@@ -69,5 +76,8 @@ form.addEventListener('submit', e => {
     news.innerHTML = '';
     searchTopic.append(item[0]);
     news.append(item[1]);
+
   });
 });
+
+start();

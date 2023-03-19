@@ -1,5 +1,14 @@
 import { preloadImg } from './preload.js';
 
+const titleNews = {
+  ru: 'Свежие новости',
+  rs: 'Најновије вести',
+  hu: 'Legfrissebb hírek',
+};
+
+console.log(titleNews.rs);
+console.log(placeholderValue.hu);
+
 const createContainer = () => {
   const container = document.createElement('div');
   container.classList.add('container');
@@ -100,7 +109,7 @@ const dateNow = (date) => {
   return (new Date(date).toLocaleString('en', option));
 };
 
-const renderFourNews = (err, data, searchData = null) => {
+const renderFourNews = (err, data, searchData = null, lang) => {
   if (err) {
     console.warn(err, data);
     return;
@@ -109,7 +118,7 @@ const renderFourNews = (err, data, searchData = null) => {
   const container = createContainer();
 
   const title = document.createElement('h2');
-  title.textContent = 'Свежие новости';
+  title.textContent = titleNews[`${lang}`];
   title.classList.add('new__title');
 
   let arrNews = data.articles.slice(0, 4);
@@ -127,7 +136,7 @@ const renderFourNews = (err, data, searchData = null) => {
   return container;
 };
 
-const renderSearch = (err, data, searchData) => {
+const renderSearch = (err, data, searchData, lang) => {
   if (err) {
     console.warn(err, data);
     return;
@@ -161,7 +170,9 @@ const renderSearch = (err, data, searchData) => {
   return container;
 }
 
-const renderGoods = (err, data) => {
+const renderGoods = (err, data, option = null, lang) => {
+  console.log('renderGoods data', data);
+  console.log('renderGoods lang', titleNews[`${lang}`]);
   if (err) {
     console.warn(err, data);
     return;
@@ -173,7 +184,7 @@ const renderGoods = (err, data) => {
   list.classList.add('new__list');
 
   const title = document.createElement('h2');
-  title.textContent = 'Свежие новости';
+  title.textContent = titleNews[`${lang}`];
   title.classList.add('new__title');
 
   const goods = render(data.articles);
