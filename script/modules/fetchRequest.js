@@ -17,14 +17,11 @@ const fetchRequest = async (optionWay, {
     if (body) options.body = JSON.stringify(body);
     if (headers) options.headers = headers;
 
-    console.log('URL', `${URL}${optionWay}`);
+    console.log(`${URL}${optionWay}`);
 
     const response = await fetch(`${URL}${optionWay}`, optionWay, options);
 
-    // console.log(response);
-
     if (response.ok) {
-      console.log('data', response);
       const data = await response.json();
       console.log('fetchRequest', data);
       if (callback) return callback(null, data, optionWay, lang);
