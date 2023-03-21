@@ -7,7 +7,7 @@ const titleNews = {
 };
 
 console.log(titleNews.rs);
-console.log(placeholderValue.hu);
+// console.log(placeholderValue.hu);
 
 const createContainer = () => {
   const container = document.createElement('div');

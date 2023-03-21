@@ -19,7 +19,7 @@ const fetchRequest = async (optionWay, {
 
     console.log(`${URL}${optionWay}`);
 
-    const response = await fetch(`${URL}${optionWay}`, optionWay, options);
+    const response = await fetch(`${URL}${optionWay}`, options);
 
     if (response.ok) {
       const data = await response.json();

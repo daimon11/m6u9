@@ -18,6 +18,7 @@ langSelect.addEventListener('change', () => {
   console.log('смена язына на ' + `${langSelect.textContent}`);
   start();
   searchTopic.innerHTML = '';
+  form.reset();
 })
 
 const initSearch = (data) => {
