@@ -6,9 +6,6 @@ const titleNews = {
   hu: 'Legfrissebb hírek',
 };
 
-console.log(titleNews.rs);
-// console.log(placeholderValue.hu);
-
 const createContainer = () => {
   const container = document.createElement('div');
   container.classList.add('container');

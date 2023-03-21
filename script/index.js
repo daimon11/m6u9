@@ -9,16 +9,16 @@ const header = document.querySelector('.header');
 const footer = document.querySelector('.footer');
 
 const form = document.querySelector('.header__form');
-console.log('form', form)
 const searchTopic = document.querySelector('.search');
-console.log('searchTopic', searchTopic)
 const langSelect = document.querySelector('.header__lang-select');
+const searchInput = form.querySelector('.header__search-line');
 
 langSelect.addEventListener('change', () => {
-  console.log('смена язына на ' + `${langSelect.textContent}`);
+  console.log('смена язына на ' + `${langSelect.value}`);
+
   start();
   searchTopic.innerHTML = '';
-  form.reset();
+  searchInput.value = '';
 })
 
 const initSearch = (data) => {

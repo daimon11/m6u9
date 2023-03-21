@@ -6,7 +6,7 @@ const fetchRequest = async (optionWay, {
   callback,
   body,
   headers,
-  lang,
+  lang = 'ru',
 }) => {
   console.log('fetchRequest optionWay', optionWay);
   try {
